@@ -7,9 +7,9 @@ from PyPDF2 import PdfMerger  # for merging the pie chart and report PDFs into a
 
 # Constants for emission factors
 ENERGY_EMISSION_FACTOR = 0.0002  # in tons of CO2 per kWh
-MATERIAL_EMISSION_FACTOR = 0.001  # in tons of CO2 per pound of material
-WASTE_EMISSION_FACTOR = 0.004  # in tons of CO2 per pound of waste
-SHIPPING_EMISSION_FACTOR = 0.0001  # in tons of CO2 per mile shipped
+MATERIAL_EMISSION_FACTOR = 0.001  # in tons of CO2 per kg of material
+WASTE_EMISSION_FACTOR = 0.004  # in tons of CO2 per kg of waste
+SHIPPING_EMISSION_FACTOR = 0.0001  # in tons of CO2 per km shipped
 
 
 def calculate_manufacturing_footprint():
