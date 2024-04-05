@@ -9,6 +9,7 @@ You need to have Python installed on your machine along with the following libra
 - matplotlib
 - reportlab
 - PyPDF2
+
 You can install them using pip:
 pip install matplotlib reportlab PyPDF2
 
