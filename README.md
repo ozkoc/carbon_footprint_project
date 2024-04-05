@@ -1,5 +1,5 @@
 # Carbon Footprint Calculator for Manufacturing Company
-This project provides a Python script that calculates the carbon footprint of a manufacturing process. It takes into account energy consumption, material usage, waste production, and shipping distance to provide a comprehensive view of a company's environmental impact.
+This project provides a Python script that calculates the carbon footprint of a manufacturing process. It takes into account energy consumption, material usage, waste production, and shipping distance to provide a brief view of a company's environmental impact.
 
 #Getting Started
 These instructions will guide you through setting up the project on your local machine for development and testing purposes.
