@@ -1,9 +1,11 @@
 import datetime  # for accessing the current date and time.
 import matplotlib.pyplot as plt  # for creating the pie chart of emissions categories.
 from matplotlib.backends.backend_pdf import PdfPages
-from reportlab.lib.pagesizes import letter  # for setting the page size of the PDF report.
+from reportlab.lib.pagesizes import A4  # for setting the page size of the PDF report.
 from reportlab.pdfgen import canvas  # for creating the PDF report.
 from PyPDF2 import PdfMerger  # for merging the pie chart and report PDFs into a single PDF.
+
+
 
 # Constants for emission factors
 ENERGY_EMISSION_FACTOR = 0.0002  # in tons of CO2 per kWh
@@ -21,7 +23,6 @@ def calculate_manufacturing_footprint():
     """
 
     # Prompt user for input
-
     energy_consumption = float(input("Enter energy consumption in kWh: "))
     material_used = float(input("Enter weight of material used in kgs: "))
     waste_produced = float(input("Enter waste produced in kgs: "))
@@ -105,8 +106,8 @@ def generate_report(total_footprint, energy_emissions, material_emissions, waste
     emissions = [energy_emissions, material_emissions, waste_emissions, shipping_emissions]
 
     # Create a PDF report
-    pdf_filename = 'Numbers_Suggestions.pdf'
-    pdf = canvas.Canvas(pdf_filename, pagesize=letter)
+    pdf_filename = 'Suggestions.pdf'
+    pdf = canvas.Canvas(pdf_filename, pagesize=A4)
     pdf.setTitle('Emission Numbers and Suggestions')
 
     # Generate the report text
@@ -143,31 +144,32 @@ def generate_report(total_footprint, energy_emissions, material_emissions, waste
     return pdf_filename
 
 
-def main():
-    """The main function runs the carbon footprint calculation, generates the report,
-    and creates a merged PDF containing the pie chart and report.
-    """
-    try:
-        # Run the carbon footprint calculation and report generation
+class Calculator:
+    
+    def __init__(self):
+        pass
 
-        total_footprint, energy_emissions, material_emissions, waste_emissions, shipping_emissions = calculate_manufacturing_footprint()
-        categories = ['Energy', 'Material', 'Waste', 'Shipping']
-        emissions = [energy_emissions, material_emissions, waste_emissions, shipping_emissions]
-        # merge pie chart and report page together in asingle pdf
-        merger = PdfMerger()
-        merger.append(save_pie_chart_as_pdf(emissions, categories, filename='Pie_chart_for_emissions_rates.pdf'))
-        merger.append(
-            generate_report(total_footprint, energy_emissions, material_emissions, waste_emissions, shipping_emissions,
-                            company_name="Client A"))
+    def calculate_manufacturing_footprint(self):
+        """The calculate_manufacturing_footprint function calculates the total carbon footprint based on user inputs and
+        returns the total footprint along with energy, material, waste, and shipping emissions of a manufacturing company.
 
-        merger.write('Merged_Report.pdf')
-        print(merger)
-        merger.close()
+        Returns:
+        Total_footprint and each emission
+        """
 
-    except ValueError:
-        print("Invalid input. Please enter numerical values.")
+        # Prompt user for input
+        print ("DISPLAYING FROM THE CLASS CALCULATOR")
+        energy_consumption = float(input("Enters energy consumption in kWh: "))
+        material_used = float(input("Enters weight of material used in kgs: "))
+        waste_produced = float(input("Enters waste produced in kgs: "))
+        distance_shipped = float(input("Enters distance shipped in kms: "))
 
+        # Calculate emissions
+        energy_emissions = energy_consumption * ENERGY_EMISSION_FACTOR
+        material_emissions = material_used * MATERIAL_EMISSION_FACTOR
+        waste_emissions = waste_produced * WASTE_EMISSION_FACTOR
+        shipping_emissions = distance_shipped * SHIPPING_EMISSION_FACTOR
 
-# Run the main function
-if __name__ == "__main__":
-    main()
+        # Total carbon footprint
+        total_footprint = energy_emissions + material_emissions + waste_emissions + shipping_emissions
+        return total_footprint, energy_emissions, material_emissions, waste_emissions, shipping_emissions
