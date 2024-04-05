@@ -17,9 +17,12 @@ pip install matplotlib reportlab PyPDF2
 Clone the repository to your local machine:
 git clone https://github.com/ozkoc/carbon_footprint_project
 Navigate to the project directory:
-cd carbon-footprint-calculator
+cd main.py
 Run the script:
 python main.py
+
+# Outcome
+merged_report.pdf will be printed as pdf including pie chart of emissions and including suggestions per emissions in case of being over the limits and additional suggestions can be seen as well.
 
 # Usage
 Follow the prompts in the command line to input your manufacturing data. The script will calculate the carbon footprint and generate a PDF report with a pie chart visualization.
