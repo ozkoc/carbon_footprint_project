@@ -8,16 +8,17 @@ These instructions will guide you through setting up the project on your local m
 You need to have Python installed on your machine along with the following libraries:
 - matplotlib
 - reportlab
+- PyPDF2
 You can install them using pip:
-pip install matplotlib reportlab
+pip install matplotlib reportlab PyPDF2
 
 # Installing
 Clone the repository to your local machine:
-git clone https://your-repository-url
+git clone https://github.com/ozkoc/carbon_footprint_project
 Navigate to the project directory:
 cd carbon-footprint-calculator
 Run the script:
-python carbon_footprint_calculator.py
+python main.py
 
 # Usage
 Follow the prompts in the command line to input your manufacturing data. The script will calculate the carbon footprint and generate a PDF report with a pie chart visualization.
